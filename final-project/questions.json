@@ -1,0 +1,123 @@
+{
+    "1": {
+        "topics": ["strings", "lists", "dictionaries"],
+        "question": "What does the len() function do?",
+        "options": {
+            "a": "Returns the length (the number of items) of an object passed into it.",
+            "b": "Prints out the length (the number of items) of an object to the screen.",
+            "c": "Returns an iterator that applies function to every item of iterable."
+        },
+        "answer": "a"
+    },
+    "2": {
+        "topics": ["files"],
+        "question": "What does the open() function do?",
+        "options": {
+            "a": "Opens a module to use the module's functions and classes throughout the program.",
+            "b": "Opens a dictionary and returns it's key-value pairs.",
+            "c": "When used along the \"with\" statement, opens a file and returns a corresponding file object."
+        },
+        "answer": "c"
+    },
+    "3": {
+        "topics": ["modules"],
+        "question": "Which of the following statements can be used to import the \"json\" module from Python's standard library?",
+        "options": {
+            "a": "import json",
+            "b": "from json import dumps",
+            "c": "import json as j",
+            "d": "All other options"
+        },
+        "answer": "d"
+    },
+    "4": {
+        "topics": ["lists"],
+        "question": "How do you make a copy of a list?",
+        "options": {
+            "a": "my_list_copy = my_list[:]",
+            "b": "my_list_copy = my_list",
+            "c": "my_list_copy = my_list[-1:]"
+        },
+        "answer": "a"
+    },
+    "5": {
+        "topics": ["dictionaries"],
+        "question": "How do you use a for loop to iterate through the keys and values of a dictionary?",
+        "options": {
+            "a": "for key, value in my_dictionary.items():",
+            "b": "for key, value in my_dictionary.values():",
+            "c": "for key, value in my_dictionary:"
+        },
+        "answer": "a"
+    },
+    "6": {
+        "topics": ["tuples"],
+        "question": "How do you remove the last item of a tuple?",
+        "options": {
+            "a": "my_tuple.remove(-1)",
+            "b": "Trick question! Tuples are immutable.",
+            "c": "my_tuple.pop()"
+        },
+        "answer": "b"
+    },
+    "7": {
+        "topics": ["tuples"],
+        "question": "What is a correct example of creating a tuple?",
+        "options": {
+            "a": "my_tuple = ('friday', 'saturday', 'sunday')",
+            "b": "my_tuple = ['friday', 'saturday', 'sunday']",
+            "c": "my_tuple = {'friday', 'saturday', 'sunday'}"
+        },
+        "answer": "a"
+    },
+    "8": {
+        "topics": ["strings"],
+        "question": "Explain the following statement -> print('{0:^5} | {1:<5}'.format(variable1, variable2))",
+        "options": {
+            "a": "Print variable1 with center alignment and a minimum length of 5, then \"|\", and then variable2 with left alignment and a minimum length of 5. ",
+            "b": "Print variable1 5 times with center alignment, then \"|\", and then variable2 5 times with left alignment.",
+            "c": "This code would result in an error."
+        },
+        "answer": "a"
+    },
+    "9": {
+        "topics": [],
+        "question": "What statement can be used to get input from the user and store it to the variable \"user_input\"?",
+        "options": {
+            "a": "user_input = input('Please enter your input: ')",
+            "b": "user_input = cin('Please enter your input: ')",
+            "c": "user_input = get('Please enter your input: ')"
+        },
+        "answer": "a"
+    },
+    "10": {
+        "topics": ["lists"],
+        "question": "What is a way to remove the last item from a list and assign it to a variable called \"last_item\"?",
+        "options": {
+            "a": "last_item = my_list.pop()",
+            "b": "last_item = my_list.remove(-1)",
+            "c": "last_item = pop(my_list)"
+        },
+        "answer": "a"
+    },
+    "11": {
+        "topics": ["lists"],
+        "question": "What is one way of selecting the last item on a list?",
+        "options": {
+            "a": "my_list[-1]",
+            "b": "my_list[0]",
+            "c": "my_list[:-1]"
+        },
+        "answer": "a"
+    },
+    "12": {
+        "topics": ["list"],
+        "question": "How do you iterate through every item in a list?",
+        "options": {
+            "a": "for item in my_list:",
+            "b": "while item in my_list:",
+            "c": "try item in my_list:"
+        },
+        "answer": "a"
+    }
+}
