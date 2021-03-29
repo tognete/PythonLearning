@@ -33,7 +33,10 @@ class Quiz():
 
                 current_question = self.questions.get(self.questions_to_ask[index])
 
-                os.system('clear')
+                try:
+                    os.system('clear')
+                except:
+                    os.system('cls')
                 # The ask_question function runs and returns True/False for a(n) correct/incorrect answer, if correct increase the score
                 if ask_question(current_question, index + 1, range_size):
                     score += 1
@@ -187,7 +190,10 @@ def main():
         compiled_data = create_compiled_data(questions, topics, past_scores)
 
         # Use the system function from the os module (imported at the beginning of the script) to clear the terminal screen
-        os.system('clear')
+        try:
+            os.system('clear')
+        except:
+            os.system('cls')    # in case Windows 10 instead of macOS
         # Print welcome page - a table with all topics, their question count, and their previous scores
         print_welcome_page(compiled_data)
 
@@ -206,7 +212,10 @@ def main():
         except UserQuit:
             break
 
-        os.system('clear')
+        try:
+            os.system('clear')
+        except:
+            os.system('cls')
 
         # Compute the final score based on what was returned from the chosen_quiz method
         final_score = int(100 * score / range_size)
