@@ -1,3 +1,3 @@
 ## Welcome to Python Learning!
 
-Find all exercises for each day of the course along with their respective code. You'll also find here the final project prompt and code.
+Here you'll find all the exercises for each day of the 30-day course along with the code to complete them. You'll find the final project prompt and code to complete it as well. Don't hesitate to reach out with any questions!
