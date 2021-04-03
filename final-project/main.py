@@ -33,10 +33,8 @@ class Quiz():
 
                 current_question = self.questions.get(self.questions_to_ask[index])
 
-                try:
-                    os.system('clear')
-                except:
-                    os.system('cls')
+                clear()
+                
                 # The ask_question function runs and returns True/False for a(n) correct/incorrect answer, if correct increase the score
                 if ask_question(current_question, index + 1, range_size):
                     score += 1
@@ -174,6 +172,19 @@ def validated_input(prompt, valid_options, value_to_quit='q'):
         else:
             return user_input
 
+def clear():
+    """ Clears the screen """
+
+    # If the OS is Windows os.name would == 'nt' and 'cls' would be used, for everything else 'clear' is used
+    if os.name == 'nt':
+        arg = 'cls'
+    else:
+        arg = 'clear'
+    
+    # you could also use -> 'cls' if os.name == 'nt' else 'clear'
+    
+    os.system(arg)
+
 def main():
 
     flag = True
@@ -189,11 +200,9 @@ def main():
         # Create a list of dictionaries, each dictionary has one topic and it's corresponding data
         compiled_data = create_compiled_data(questions, topics, past_scores)
 
-        # Use the system function from the os module (imported at the beginning of the script) to clear the terminal screen
-        try:
-            os.system('clear')
-        except:
-            os.system('cls')    # in case Windows 10 instead of macOS
+        # Call the clear function to clear the screen, defined earlier in the script
+        clear()
+
         # Print welcome page - a table with all topics, their question count, and their previous scores
         print_welcome_page(compiled_data)
 
@@ -211,11 +220,9 @@ def main():
             score, range_size = chosen_quiz.run_quiz()
         except UserQuit:
             break
-
-        try:
-            os.system('clear')
-        except:
-            os.system('cls')
+        
+        # Call the clear function to clear the screen, defined earlier in the script
+        clear()
 
         # Compute the final score based on what was returned from the chosen_quiz method
         final_score = int(100 * score / range_size)
