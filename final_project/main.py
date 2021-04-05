@@ -1,10 +1,8 @@
+#!/usr/bin/env python3
+
 import json
 import os
 import random
-
-class UserQuit(Exception):
-    """ Define a UserQuit class that inherits from the Python Exception base class """
-    pass
 
 class Quiz():
     """ Represents a Quiz based on the compiled data and a specified topic """
@@ -27,21 +25,13 @@ class Quiz():
         score = 0
         # Define range_size as the number of questions to be asked, maxing out at 10 to keep the quiz short
         range_size = min(10, len(self.questions_to_ask))
-
-        try:
-            for index in range(range_size):
-
-                current_question = self.questions.get(self.questions_to_ask[index])
-
-                clear()
-                
-                # The ask_question function runs and returns True/False for a(n) correct/incorrect answer, if correct increase the score
-                if ask_question(current_question, index + 1, range_size):
-                    score += 1
-
-                input('enter any key to continue ')
-        except UserQuit:
-            raise UserQuit
+        for index in range(range_size):
+            current_question = self.questions.get(self.questions_to_ask[index])
+            clear()
+            # The ask_question function runs and returns True/False for a(n) correct/incorrect answer, if correct increase the score
+            if ask_question(current_question, index + 1, range_size):
+                score += 1
+            input('enter any key to continue ')
 
         return score, range_size
 
@@ -67,7 +57,6 @@ def ask_question(question, question_number, total_questions):
 
     # Create a tuple with the first 7 letters of the alphabet
     letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g')
-
     # The shuffled_options dictionary will have the options in random order
     shuffled_options = {}
     for index in range(len(options)):
@@ -82,13 +71,8 @@ def ask_question(question, question_number, total_questions):
 
     # Define the correct_answer from the question object
     correct_answer = question['options'][question['answer']]
-
     # Prompt user for input by using the validated_input function
-    try:
-        user_input = validated_input('Enter your answer (\'q\' to quit): ', list(shuffled_options.keys()))
-    except UserQuit:
-        raise UserQuit
-
+    user_input = validated_input('Enter your answer (\'q\' to quit): ', list(shuffled_options.keys()))
     # Define the user_anser from suffled_options
     user_answer = shuffled_options[user_input]
     
@@ -105,19 +89,16 @@ def create_compiled_data(questions, topics, past_scores):
     
     # Creating an empty dictionary that will eventually be used to create the welcome table
     compiled_data = {}
-
     # Start filling in the welcome_page_info list with the topics
     for number, topic in topics.items():
         compiled_data[number] = { 'topic': topic }
 
     # Append one last item for "all" topics, we use int(max(topics)) and add 1 since the number of topics in topics.json might vary
     compiled_data[str(len(compiled_data) + 1)] = { 'topic': 'all' }
-
     # Fill in the compiled_data dictionary with the remaining data from the questions and past_scores objects (previously loaded from files)
     for data_key, data_value in compiled_data.items():
 
         data_value["question-ids"] = []
-
         if data_value["topic"] != 'all':
             for key, value in questions.items():
                 if data_value["topic"] in value["topics"]:
@@ -127,7 +108,6 @@ def create_compiled_data(questions, topics, past_scores):
                 data_value["question-ids"].append(key)
 
         data_value['questions-count'] = len(data_value['question-ids'])
-
         data_value['past-score'] = past_scores.get(data_key)
 
     return compiled_data
@@ -136,10 +116,8 @@ def print_welcome_page(compiled_data):
     """ Takes in the compiled_data and does some formatting to print the welcome page to the app """
 
     table_titles = ['topic', 'questions', 'previous score']
-
     # Define the length of the longest title (for table sizing later on)
     max_length = len(max(table_titles, key=len))
-
     # Compare max title length to tipics lengths to determine which one to use (+4 because of the numbers on before each title)
     for value in compiled_data.values():
         if len(value['topic']) + 4 > max_length:
@@ -161,12 +139,11 @@ def validated_input(prompt, valid_options, value_to_quit='q'):
 
     # Prompt the user for input
     user_input = input(prompt)
-
-    # Iterate through the while loop until the user_input is valid (and return valid input), or if the value_to_quit is entered raise a UserQuit exception
+    # Iterate through the while loop until the user_input is valid (and return valid input), or if the value_to_quit is entered raise a SystemExit exception
     flag = True
     while flag:
         if user_input == value_to_quit:
-            raise UserQuit
+            raise SystemExit
         elif user_input not in valid_options:
             user_input = input('Please enter a valid option or \'{}\' to quit: '.format(value_to_quit))
         else:
@@ -180,9 +157,7 @@ def clear():
         arg = 'cls'
     else:
         arg = 'clear'
-    
     # you could also use -> 'cls' if os.name == 'nt' else 'clear'
-    
     os.system(arg)
 
 def main():
@@ -207,19 +182,13 @@ def main():
         print_welcome_page(compiled_data)
 
         # Get the topic_id as user input using the validated_input function. All wrapped in a try block in case the user quits along the way
-        try:
-            topic_id = validated_input('\nEnter the number of the topic you want to review (\'q\' to quit): ', list(compiled_data.keys()))
-        except UserQuit:
-            break
+        topic_id = validated_input('\nEnter the number of the topic you want to review (\'q\' to quit): ', list(compiled_data.keys()))
 
         # Create an instance of the the Quiz class based on the topic selected by the user and passing in compiled_data and questions
         chosen_quiz = Quiz(topic_id, compiled_data, questions)
 
         # Execute the run_quiz method from the Quiz instance named chosen_quiz. All wrapped in a try block in case the user quits along the way
-        try:
-            score, range_size = chosen_quiz.run_quiz()
-        except UserQuit:
-            break
+        score, range_size = chosen_quiz.run_quiz()
         
         # Call the clear function to clear the screen, defined earlier in the script
         clear()
