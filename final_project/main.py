@@ -150,7 +150,7 @@ def validated_input(prompt, valid_options, value_to_quit='q'):
             return user_input
 
 def clear():
-    """ Clears the screen """
+    """ Clears the terminal """
 
     # If the OS is Windows os.name would == 'nt' and 'cls' would be used, for everything else 'clear' is used
     if os.name == 'nt':
