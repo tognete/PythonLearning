@@ -124,7 +124,7 @@ def print_welcome_page(compiled_data):
             max_length = len(value['topic']) + 4
 
     print('Welcome to your Python Learning App!\n')
-    print('Select a topic to review and update your score by answering a max of 10 questions per run. Good luck!\n')
+    print('Select a topic to review and you will be asked a max of 10 questions per run. Good luck!\n')
 
     # Print table titles
     print('| {0:^{max_length}} | {1:^{max_length}} | {2:^{max_length}} |'
