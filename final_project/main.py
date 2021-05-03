@@ -162,8 +162,9 @@ def validated_input(prompt, valid_options, value_to_quit='q'):
 def clear():
     """ Clears the terminal """
 
-    # Shorthand If statement. If the OS is Windows os.name would == 'nt' and 'cls' would be used, for everything else 'clear' is used
+    # This is a shorthand if statement. If the OS is Windows os.name would == 'nt' and 'cls' would be used, for everything else 'clear' is used
     arg = 'cls' if os.name == 'nt' else 'clear'
+    # Use the system() function from the os library to clear the terminal screen
     os.system(arg)
 
 def main():
