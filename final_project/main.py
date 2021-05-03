@@ -63,11 +63,11 @@ def ask_question(question, question_number, total_questions):
         shuffled_options[letters[index]] = options[index]
 
     # Print the question prompt
-    print(' - ({}/{}) {}'.format(question_number, total_questions, question['question']))
+    print(f' - ({question_number}/{total_questions}) {question["question"]}')
 
     # Print shuffled_options for the user to choose from
     for key, value in shuffled_options.items():
-        print('\t{}. {}'.format(key, value))
+        print(f'\t{key}. {value}')
 
     # Define the correct_answer from the question object
     correct_answer = question['options'][question['answer']]
@@ -128,18 +128,18 @@ def print_welcome_page(compiled_data):
 
     # Print table titles
     print('| {0:^{max_length}} | {1:^{max_length}} | {2:^{max_length}} |'
-            .format(
-                table_titles[0].title(),
-                table_titles[1].title(),
-                table_titles[2].title(),
-                max_length=max_length)
-            )
+        .format(
+            table_titles[0].title(),
+            table_titles[1].title(),
+            table_titles[2].title(),
+            max_length=max_length)
+        )
 
     # Print table rows
     for key, value in compiled_data.items():
         print('| {0:{max_length}} | {1:^{max_length}} | {2:^{max_length}} |'
             .format(
-                key + '.' + ' ' + value['topic'].title(),
+                f'{key}. {value["topic"].title()}',
                 value['questions-count'],
                 value.get('past-score', '') or '',
                 max_length=max_length)
@@ -155,7 +155,7 @@ def validated_input(prompt, valid_options, value_to_quit='q'):
         if user_input == value_to_quit:
             raise SystemExit
         elif user_input not in valid_options:
-            user_input = input('Please enter a valid option or \'{}\' to quit: '.format(value_to_quit))
+            user_input = input(f'Please enter a valid option or \'{value_to_quit}\' to quit: ')
         else:
             return user_input
 
@@ -211,13 +211,13 @@ def main():
 
         # Return score, selecting prompt based on how high is was
         if final_score == 100:
-            print('\nUnbelieveable! You scored {}%!\n'.format(final_score))
+            print(f'\nUnbelieveable! You scored {final_score}%!\n')
         elif final_score >= 90:
-            print('\nExcellent job! You scored {}%!\n'.format(final_score))
+            print(f'\nExcellent job! You scored {final_score}%!\n')
         elif final_score >= 80:
-            print('\nAwesome! You scored {}%!\n'.format(final_score))
+            print(f'\nAwesome! You scored {final_score}%!\n')
         else:
-            print('\nYou scored {}%\n'.format(final_score))
+            print(f'\nYou scored {final_score}%\n')
 
         # Finally, ask the user if they want to re-run the app or quit
         another_try = input('Enter \'y\' to run the app again, any other key to quit: ')
