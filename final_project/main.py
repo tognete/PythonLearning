@@ -118,7 +118,7 @@ def print_welcome_page(compiled_data):
     table_titles = ['topic', 'questions', 'previous score']
     # Define the length of the longest title (for table sizing later on)
     max_length = len(max(table_titles, key=len))
-    # Compare max title length to tipics lengths to determine which one to use (+4 because of the numbers on before each title)
+    # Compare max title length to topics lengths to determine which one to use (+4 because of the numeration of each title)
     for value in compiled_data.values():
         if len(value['topic']) + 4 > max_length:
             max_length = len(value['topic']) + 4
@@ -128,12 +128,22 @@ def print_welcome_page(compiled_data):
 
     # Print table titles
     print('| {0:^{max_length}} | {1:^{max_length}} | {2:^{max_length}} |'
-            .format(table_titles[0].title(), table_titles[1].title(), table_titles[2].title(), max_length=max_length))
+            .format(
+                table_titles[0].title(),
+                table_titles[1].title(),
+                table_titles[2].title(),
+                max_length=max_length)
+            )
 
     # Print table rows
     for key, value in compiled_data.items():
         print('| {0:{max_length}} | {1:^{max_length}} | {2:^{max_length}} |'
-            .format(key + '.' + ' ' + value['topic'].title(), value['questions-count'], value.get('past-score', ''), max_length=max_length))
+            .format(
+                key + '.' + ' ' + value['topic'].title(),
+                value['questions-count'],
+                value.get('past-score', '') or '',
+                max_length=max_length)
+            )
 
 def validated_input(prompt, valid_options, value_to_quit='q'):
 
@@ -152,12 +162,8 @@ def validated_input(prompt, valid_options, value_to_quit='q'):
 def clear():
     """ Clears the terminal """
 
-    # If the OS is Windows os.name would == 'nt' and 'cls' would be used, for everything else 'clear' is used
-    if os.name == 'nt':
-        arg = 'cls'
-    else:
-        arg = 'clear'
-    # you could also use -> 'cls' if os.name == 'nt' else 'clear'
+    # Shorthand If statement. If the OS is Windows os.name would == 'nt' and 'cls' would be used, for everything else 'clear' is used
+    arg = 'cls' if os.name == 'nt' else 'clear'
     os.system(arg)
 
 def main():
