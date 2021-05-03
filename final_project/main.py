@@ -36,7 +36,7 @@ class Quiz():
         return score, range_size
 
 def load_json_files(*file_names):
-    """ Receives one or more file names and returns a list of each one as a dictionary. """
+    """ Receives one or more file names and returns a list of dictionaries, each dictionary representing the contents of each file. """
 
     resulting_loads = []
     for file in file_names:
