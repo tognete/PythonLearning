@@ -168,9 +168,9 @@ def clear():
     os.system(arg)
 
 def main():
+    """ Runs main code """
 
-    flag = True
-    while flag:
+    while True:
         # These are the files to be loaded
         questions_file = 'questions.json'
         topics_file = 'topics.json'
