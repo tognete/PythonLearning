@@ -1,17 +1,17 @@
 ## Welcome to Python Learning!
 
-In this repo you'll find the final projcet of my Learn Python in 30 Days online course. The final project is a Python Learning App, read through how it works below. Don't hesitate to reach out with any questions!
+In this repo, you'll find the final project of my Learn Python in 30 Days online course as well as a folder (called "solutions") with solutions to the course's "Understand" section daily exercises. The final project is a Python Learning App, read through how it works below. Don't hesitate to reach out with any questions!
 
 ## Final Project - Python Learning App
 
-The app's purpose is to quiz que user with Python questions, determine if the user gets them right or wrong and finally calcualte and save the final score.
+The app's purpose is to quiz the user with Python questions, determine if the user gets them right or wrong, and finally calculate and save the final score.
 Here's how the app should work.
 
 1. When running `main.py`, the script reads through the `topics.json`, `questions.json`, and `past_scores.json` files and prints the welcome page below to the user: 
 
 ![image](https://user-images.githubusercontent.com/65046112/112773545-698c3f80-9004-11eb-972a-98ec8ba570bc.png)
 
-2. The user then inputs a number referencing the topic to get quizzed. Let's say the user inputs "2", this would take take them to the quiz on Lists and start prompting the questions on that topic.
+2. The user then inputs a number referencing the topic to get quizzed. Let's say the user inputs "2", this would take them to the quiz on Lists and start prompting the questions on that topic.
 
 ![image](https://user-images.githubusercontent.com/65046112/112773583-8de81c00-9004-11eb-9a9a-ccc62d0e2295.png)
 
