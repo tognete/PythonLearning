@@ -13,17 +13,20 @@
 
 # ask input to enter score between 0-100 and prints grade
 
-input_score = input('Please enter the score: ')
-score = int(input_score)
+def calculate_grade():
+    score = int(input("Enter a score from 0-100: "))
+    
+    if score >= 94:
+        print('A')
+    elif score >= 80:
+        print('B')
+    elif score >= 70:
+        print('C')
+    else:
+        print('F')
 
-if score >= 94:
-    print('A')
-elif score >= 80:
-    print('B')
-elif score >= 70:
-    print('C')
-else:
-    print('F')
+# Call the function to test
+calculate_grade()
 
 # Understand 4:
 
